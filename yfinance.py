@@ -31,10 +31,12 @@ for ss in stock_list.iterrows():
     #print(s)
 
     URL = "https://finance.yahoo.com/quote/" + str(s) + "/key-statistics?p=" + str(s)
+    URL1 = "https://finance.yahoo.com/quote/" + str(s) + "/holders?p=" + str(s)
     headers = {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
     # Here the user agent is for Edge browser on windows 10. You can find your browser user agent from the above given link.
     r = requests.get(url=URL, headers=headers)
+    r2 = requests.get(url=URL1, headers=headers)
     # time.sleep(5)
     try:
         msft = yf.Ticker(str(s))
@@ -48,7 +50,11 @@ for ss in stock_list.iterrows():
         soup = BeautifulSoup(r.content,
                              'html5lib')  # If this line causes an error, run 'pip install html5lib' or install html5lib
         # print(soup.prettify())
+        soup1 = BeautifulSoup(r2.content, 'html5lib')
         dom = etree.HTML(str(soup))
+        dom1 = etree.HTML(str(soup1))
+
+        float_held_by_institutions = dom1.xpath('//*[@id="Col1-1-Holders-Proxy"]/section/div[2]/div[2]/div/table/tbody/tr[3]/td[1]')[0].text
         company = dom.xpath('//*[@id="quote-header-info"]/div[2]/div[1]/div[1]/h1')[0].text
         ticker = s
         stock_price = dom.xpath('//*[@id="quote-header-info"]/div[3]/div[1]/div[1]/fin-streamer[1]')[0].text
@@ -64,7 +70,7 @@ for ss in stock_list.iterrows():
         forward_dividend = dom.xpath(
             '//*[@id="Col1-0-KeyStatistics-Proxy"]/section/div[2]/div[2]/div/div[3]/div/div/table/tbody/tr[1]/td[2]')[
             0].text
-        df.loc[len(df.index)] = [company, ticker, stock_price, trailing_pe, share_held_by_inst, '',
+        df.loc[len(df.index)] = [company, ticker, stock_price, trailing_pe, share_held_by_inst, float_held_by_institutions,
                                  forward_divident_yield, forward_dividend, total_22, total_21, total_20, total_19]
         print(s, " imported")
 
