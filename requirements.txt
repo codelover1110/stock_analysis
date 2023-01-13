@@ -3,3 +3,4 @@ appdirs
 frozendict
 pandas_datareader
 multitasking
+openpyxl

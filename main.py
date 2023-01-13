@@ -1,41 +1,81 @@
-# import RESTClient
-from polygon import RESTClient
-from polygon.rest.models.request import RequestOptionBuilder
-from typing import cast
-from urllib3 import HTTPResponse
-
-
-import requests
-import pandas as pd
 import io
+import time
+
+import pandas as pd
+from lxml import etree
+from bs4 import BeautifulSoup
+import requests
+from pandas_datareader import data as pdr
+#
+
+import yfinance as yf
+
+yf.pdr_override()
+
 
 def get_symbols():
-    url="https://pkgstore.datahub.io/core/nasdaq-listings/nasdaq-listed_csv/data/7665719fb51081ba0bd834fde71ce822/nasdaq-listed_csv.csv"
+    url = "https://pkgstore.datahub.io/core/nasdaq-listings/nasdaq-listed_csv/data/7665719fb51081ba0bd834fde71ce822/nasdaq-listed_csv.csv"
     s = requests.get(url).content
     companies = pd.read_csv(io.StringIO(s.decode('utf-8')))
     symbols = companies['Symbol'].tolist()
     return symbols
 
 
-# for s in get_symbols():
-#     print(s)
-#
-# exit()
+stock_list = pd.read_excel("stocks.xlsx", index_col=0)
 
-# create client
-client = RESTClient(api_key="tuQt2ur25Y7hTdGYdqI2VrE4dueVA8Xk")
+df = pd.DataFrame(columns=["Company", "Ticker", "Stock Price", "Trailing P/E Ratio", "Shares Held by Institutions",
+                           "% Float Held by Institutions", "Forward Divident Yield", "Forward Dividend",
+                           "Last Year Dividend", "2021 Dividend", "2020 Dividend", "2019 Dividend"])
+for ss in stock_list.iterrows():
+    s = ss[0]
+    #print(s)
 
-# create request options
-options = RequestOptionBuilder().edge_headers(
-    edge_id="YOUR_EDGE_ID",  # required
-    edge_ip_address="IP_ADDRESS",  # required
-)
-# get response
-res = client.get_ticker_details("F")
-res1 = client.get_aggs("F", 1, "day", "2023-01-12", "2023-01-12", options=options)
+    URL = "https://finance.yahoo.com/quote/" + str(s) + "/key-statistics?p=" + str(s)
+    URL1 = "https://finance.yahoo.com/quote/" + str(s) + "/holders?p=" + str(s)
+    headers = {
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
+    # Here the user agent is for Edge browser on windows 10. You can find your browser user agent from the above given link.
+    r = requests.get(url=URL, headers=headers)
+    r2 = requests.get(url=URL1, headers=headers)
+    # time.sleep(5)
+    try:
+        msft = yf.Ticker(str(s))
+        msft.dividends.to_csv("dividend.csv")
+        df1 = pd.read_csv("dividend.csv")
+        total_19 = df1.loc[df1['Date'].str.contains('2019'), 'Dividends'].sum()
+        total_20 = df1.loc[df1['Date'].str.contains('2020'), 'Dividends'].sum()
+        total_21 = df1.loc[df1['Date'].str.contains('2021'), 'Dividends'].sum()
+        total_22 = df1.loc[df1['Date'].str.contains('2022'), 'Dividends'].sum()
 
-# do something with response
-print(res)
-print(res1)
-dividends = [d for d in client.list_dividends("F")]
-print(dividends)
+        soup = BeautifulSoup(r.content,
+                             'html5lib')  # If this line causes an error, run 'pip install html5lib' or install html5lib
+        # print(soup.prettify())
+        soup1 = BeautifulSoup(r2.content, 'html5lib')
+        dom = etree.HTML(str(soup))
+        dom1 = etree.HTML(str(soup1))
+
+        float_held_by_institutions = dom1.xpath('//*[@id="Col1-1-Holders-Proxy"]/section/div[2]/div[2]/div/table/tbody/tr[3]/td[1]')[0].text
+        company = dom.xpath('//*[@id="quote-header-info"]/div[2]/div[1]/div[1]/h1')[0].text
+        ticker = s
+        stock_price = dom.xpath('//*[@id="quote-header-info"]/div[3]/div[1]/div[1]/fin-streamer[1]')[0].text
+        trailing_pe = dom.xpath(
+            '//*[@id="Col1-0-KeyStatistics-Proxy"]/section/div[2]/div[1]/div/div/div/div/table/tbody/tr[3]/td[2]')[
+            0].text
+        share_held_by_inst = dom.xpath(
+            '//*[@id="Col1-0-KeyStatistics-Proxy"]/section/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[7]/td[2]')[
+            0].text
+        forward_divident_yield = dom.xpath(
+            '//*[@id="Col1-0-KeyStatistics-Proxy"]/section/div[2]/div[2]/div/div[3]/div/div/table/tbody/tr[2]/td[2]')[
+            0].text
+        forward_dividend = dom.xpath(
+            '//*[@id="Col1-0-KeyStatistics-Proxy"]/section/div[2]/div[2]/div/div[3]/div/div/table/tbody/tr[1]/td[2]')[
+            0].text
+        df.loc[len(df.index)] = [company, ticker, stock_price, trailing_pe, share_held_by_inst, float_held_by_institutions,
+                                 forward_divident_yield, forward_dividend, total_22, total_21, total_20, total_19]
+        print(s, " imported")
+
+        df.to_csv("yfinance.csv")
+    except:
+        print(s, " cant be imported")
+
+df.to_csv("yfinance.csv")
