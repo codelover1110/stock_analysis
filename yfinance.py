@@ -9,8 +9,8 @@ from pandas_datareader import data as pdr
 #
 
 import yfinance as yf
-yf.pdr_override()
 
+yf.pdr_override()
 
 
 def get_symbols():
@@ -21,18 +21,21 @@ def get_symbols():
     return symbols
 
 
-df = pd.DataFrame(columns=["Company", "Ticker", "Stock Price", "Trailing P/E Ratio", "Shares Held by Institutions",
-                           "% Float Held by Institutions", "Forward Divident Yield","Forward Dividend",
-                           "Last Year Dividend", "2021 Dividend", "2020 Dividend", "2019 Dividend"])
-for s in get_symbols():
+stock_list = pd.read_excel("stocks.xlsx", index_col=0)
 
+df = pd.DataFrame(columns=["Company", "Ticker", "Stock Price", "Trailing P/E Ratio", "Shares Held by Institutions",
+                           "% Float Held by Institutions", "Forward Divident Yield", "Forward Dividend",
+                           "Last Year Dividend", "2021 Dividend", "2020 Dividend", "2019 Dividend"])
+for ss in stock_list.iterrows():
+    s = ss[0]
+    #print(s)
 
     URL = "https://finance.yahoo.com/quote/" + str(s) + "/key-statistics?p=" + str(s)
     headers = {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
     # Here the user agent is for Edge browser on windows 10. You can find your browser user agent from the above given link.
     r = requests.get(url=URL, headers=headers)
-    #time.sleep(5)
+    # time.sleep(5)
     try:
         msft = yf.Ticker(str(s))
         msft.dividends.to_csv("dividend.csv")
