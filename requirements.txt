@@ -1,0 +1,5 @@
+yfinance
+appdirs
+frozendict
+pandas_datareader
+multitasking
