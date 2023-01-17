@@ -1,26 +1,26 @@
 ,Company,Ticker,Stock Price,Trailing P/E Ratio,Shares Held by Institutions,% Float Held by Institutions,Forward Divident Yield,Forward Dividend,Last Year Dividend,2021 Dividend,2020 Dividend,2019 Dividend
-0,Atlantic American Corporation (AAME),AAME,2.5200,17.43,5.62%,28.30%,0.80%,0.02,0.02,0.02,0.0,0.02
-1,"Applied Optoelectronics, Inc. (AAOI)",AAOI,2.4100,,33.23%,34.92%,,,0.0,0.0,0.0,0.0
-2,"AAON, Inc. (AAON)",AAON,77.72,59.35,71.98%,90.60%,0.63%,0.48,0.43,0.38,0.38,0.32
-3,Apple Inc. (AAPL),AAPL,133.40,21.21,60.85%,60.89%,0.71%,0.92,0.91,0.865,0.8074999999999999,0.76
-4,"Atlas Air Worldwide Holdings, Inc. (AAWW)",AAWW,101.85,8.17,114.76%,116.10%,,,0.0,0.0,0.0,0.0
-5,Ameris Bancorp (ABCB),ABCB,49.26,9.70,90.30%,95.39%,1.23%,0.6,0.6,0.6,0.6,0.5
-6,"ARCA biopharma, Inc. (ABIO)",ABIO,2.3500,,38.64%,39.14%,,,0.0,0.0,0.0,0.0
+0,Atlantic American Corporation (AAME),AAME,2.6000,17.79,5.62%,28.30%,0.80%,0.02,0.02,0.02,0.0,0.02
+1,"Applied Optoelectronics, Inc. (AAOI)",AAOI,2.4400,,33.23%,34.92%,,,0.0,0.0,0.0,0.0
+2,"AAON, Inc. (AAON)",AAON,77.10,62.30,71.98%,90.60%,0.63%,0.48,0.43,0.38,0.38,0.32
+3,Apple Inc. (AAPL),AAPL,135.94,,60.85%,60.89%,0.71%,0.92,0.91,0.865,0.8074999999999999,0.76
+4,"Atlas Air Worldwide Holdings, Inc. (AAWW)",AAWW,101.63,8.17,114.76%,116.10%,,,0.0,0.0,0.0,0.0
+5,Ameris Bancorp (ABCB),ABCB,48.96,9.96,90.31%,95.40%,1.22%,0.6,0.6,0.6,0.6,0.5
+6,"ARCA biopharma, Inc. (ABIO)",ABIO,2.3400,,38.64%,39.14%,,,0.0,0.0,0.0,0.0
 7,"Abiomed, Inc. (ABMD)",ABMD,381.02,65.36,97.09%,99.10%,,,0.0,0.0,0.0,0.0
-8,ACADIA Pharmaceuticals Inc. (ACAD),ACAD,18.58,,95.10%,95.23%,,,0.0,0.0,0.0,0.0
-9,"Adicet Bio, Inc. (ACET)",ACET,8.59,,110.95%,116.16%,,,0.0,0.0,0.0,0.0
-10,"Acorn Energy, Inc. (ACFN)",ACFN,0.3810,,10.92%,13.49%,,,0.0,0.0,0.0,0.0
-11,Arch Capital Group Ltd. (ACGL),ACGL,63.46,20.21,92.46%,95.40%,,,0.0,0.0,0.0,0.0
-12,"Acadia Healthcare Company, Inc. (ACHC)",ACHC,85.02,26.96,104.30%,105.90%,,,0.0,0.0,0.0,0.0
+8,ACADIA Pharmaceuticals Inc. (ACAD),ACAD,18.05,,95.10%,95.24%,,,0.0,0.0,0.0,0.0
+9,"Adicet Bio, Inc. (ACET)",ACET,8.73,,110.95%,116.16%,,,0.0,0.0,0.0,0.0
+10,"Acorn Energy, Inc. (ACFN)",ACFN,0.3450,,10.92%,13.49%,,,0.0,0.0,0.0,0.0
+11,Arch Capital Group Ltd. (ACGL),ACGL,64.00,11.18,92.46%,95.40%,,,0.0,0.0,0.0,0.0
+12,"Acadia Healthcare Company, Inc. (ACHC)",ACHC,84.52,,104.29%,105.88%,,,0.0,0.0,0.0,0.0
 13,Achison Inc. (ACHN),ACHN,0.1200,,0.00%,0.00%,,,0.0,0.0,0.0,0.0
-14,"ACI Worldwide, Inc. (ACIW)",ACIW,26.92,19.54,100.99%,102.10%,,,0.0,0.0,0.0,0.0
-15,"Axcelis Technologies, Inc. (ACLS)",ACLS,99.21,18.24,89.55%,91.31%,,,0.0,0.0,0.0,0.0
-16,ACNB Corporation (ACNB),ACNB,38.12,11.12,29.50%,30.72%,2.90%,1.12,1.06,1.03,1.0,0.98
-17,"Acorda Therapeutics, Inc. (ACOR)",ACOR,0.8901,0.94,25.80%,25.97%,,,0.0,0.0,0.0,0.0
-18,"AcelRx Pharmaceuticals, Inc. (ACRX)",ACRX,2.6500,0.35,12.35%,12.50%,,,0.0,0.0,0.0,0.0
-19,Acasti Pharma Inc. (ACST),ACST,0.7101,,0.21%,0.26%,,,0.0,0.0,0.0,0.0
-20,Acacia Research Corporation (ACTG),ACTG,4.3350,8.60,61.75%,64.58%,,,0.0,0.0,0.0,0.0
-21,"Acura Pharmaceuticals, Inc. (ACUR)",ACUR,0.0500,7.00,3.01%,3.72%,,,0.0,0.0,0.0,0.0
-22,Adobe Inc. (ADBE),ADBE,339.49,34.11,85.36%,85.64%,,,0.0,0.0,0.0,0.0
-23,"Advanced Emissions Solutions, Inc. (ADES)",ADES,2.5750,4.48,36.54%,37.33%,,,0.0,0.0,0.25,1.0
-24,"Analog Devices, Inc. (ADI)",ADI,168.73,31.53,90.72%,91.57%,1.80%,3.04,3.04,2.76,2.48,2.16
+14,"ACI Worldwide, Inc. (ACIW)",ACIW,27.01,19.48,100.86%,101.97%,,,0.0,0.0,0.0,0.0
+15,"Axcelis Technologies, Inc. (ACLS)",ACLS,102.00,20.94,88.82%,90.57%,,,0.0,0.0,0.0,0.0
+16,ACNB Corporation (ACNB),ACNB,38.07,11.12,29.50%,30.72%,2.90%,1.12,1.06,1.03,1.0,0.98
+17,"Acorda Therapeutics, Inc. (ACOR)",ACOR,0.8872,0.94,25.80%,25.97%,,,0.0,0.0,0.0,0.0
+18,"AcelRx Pharmaceuticals, Inc. (ACRX)",ACRX,2.5800,0.41,12.35%,12.50%,,,0.0,0.0,0.0,0.0
+19,Acasti Pharma Inc. (ACST),ACST,0.7500,,0.21%,0.26%,,,0.0,0.0,0.0,0.0
+20,Acacia Research Corporation (ACTG),ACTG,4.2100,9.04,61.84%,64.67%,,,0.0,0.0,0.0,0.0
+21,"Acura Pharmaceuticals, Inc. (ACUR)",ACUR,0.0002,7.00,3.01%,3.72%,,,0.0,0.0,0.0,0.0
+22,Adobe Inc. (ADBE),ADBE,344.38,34.10,85.36%,85.64%,,,0.0,0.0,0.0,0.0
+23,"Advanced Emissions Solutions, Inc. (ADES)",ADES,2.5800,4.48,36.54%,37.33%,,,0.0,0.0,0.25,1.0
+24,"Analog Devices, Inc. (ADI)",ADI,166.91,32.19,90.72%,91.57%,1.80%,3.04,3.04,2.76,2.48,2.16
